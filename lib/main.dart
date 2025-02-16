@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'profile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
               child: Center(
                 child: Padding(
                     padding:
-                        const EdgeInsets.only(top: 120, left: 20, right: 20),
+                        const EdgeInsets.only(top: 40, left: 20, right: 20),
                     child: SignInForm()),
               )),
         ),
@@ -39,6 +40,58 @@ class SignInForm extends StatefulWidget {
 
   @override
   State<SignInForm> createState() => SignInFormState();
+}
+
+class LoadingButton extends StatefulWidget {
+  const LoadingButton({super.key});
+
+  @override
+  State<LoadingButton> createState() => _LoadingButtonState();
+}
+
+class _LoadingButtonState extends State<LoadingButton> {
+  bool isLoading = false;
+
+  void handleClick() {
+    setState(() {
+      isLoading = true;
+    });
+
+    Future.delayed(Duration(seconds: 10), () {
+      setState(() {
+        isLoading = false;
+      });
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => Profile()));
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: 30),
+      child: GestureDetector(
+        onTap: isLoading ? null : handleClick,
+        child: Container(
+          height: 50,
+          width: 300,
+          decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 130, 83, 241),
+              borderRadius: BorderRadius.circular(10)),
+          child: Center(
+              child: isLoading
+                  ? CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                    )
+                  : Text(
+                      "Continue",
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    )),
+        ),
+      ),
+    );
+  }
 }
 
 class SignInFormState extends State<SignInForm> {
@@ -115,22 +168,7 @@ class SignInFormState extends State<SignInForm> {
             ),
           ),
         ),
-        Padding(
-          padding: EdgeInsets.only(bottom: 30),
-          child: Container(
-            height: 50,
-            width: 300,
-            decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 130, 83, 241),
-                borderRadius: BorderRadius.circular(10)),
-            child: Center(
-                child: Text(
-              "Continue",
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-            )),
-          ),
-        ),
+        LoadingButton(),
         Padding(
             padding: EdgeInsets.only(bottom: 30),
             child: Row(
