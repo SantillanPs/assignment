@@ -22,12 +22,12 @@ class Profile extends StatelessWidget {
             ),
             SizedBox(height: 15),
             Text(
-              "John Doe",
+              "Sebastian Santillan",
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 5),
             Text(
-              "johndoe@example.com",
+              "Santillan@example.com",
               style: TextStyle(fontSize: 16, color: Colors.grey[600]),
             ),
             SizedBox(height: 20),
@@ -39,7 +39,7 @@ class Profile extends StatelessWidget {
               child: ListTile(
                 leading: Icon(Icons.person, color: Colors.blue),
                 title: Text("Username"),
-                subtitle: Text("johndoe123"),
+                subtitle: Text("SebastianPS"),
               ),
             ),
             SizedBox(height: 10),
@@ -63,7 +63,7 @@ class Profile extends StatelessWidget {
               child: ListTile(
                 leading: Icon(Icons.location_on, color: Colors.red),
                 title: Text("Location"),
-                subtitle: Text("New York, USA"),
+                subtitle: Text("Tandag, Philippines"),
               ),
             ),
             Spacer(),
