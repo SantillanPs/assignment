@@ -57,11 +57,11 @@ class _LoadingButtonState extends State<LoadingButton> {
       isLoading = true;
     });
 
-    Future.delayed(Duration(seconds: 10), () {
+    Future.delayed(Duration(seconds: 5), () {
       setState(() {
         isLoading = false;
       });
-      Navigator.push(
+      Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => Profile()));
     });
   }

@@ -67,20 +67,6 @@ class Profile extends StatelessWidget {
               ),
             ),
             Spacer(),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 130, 83, 241),
-                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              child: Text("Logout",
-                  style: TextStyle(fontSize: 16, color: Colors.white)),
-            ),
           ],
         ),
       ),
